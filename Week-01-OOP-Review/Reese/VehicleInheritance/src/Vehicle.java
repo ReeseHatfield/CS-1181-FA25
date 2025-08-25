@@ -1,9 +1,9 @@
-public class Vehicle {
+public abstract class Vehicle {
     // fields
 
     private String name;
 
-
+    // // caused stuff to break last week
     public Vehicle(String name){
         this.name = name;
     }
@@ -13,7 +13,5 @@ public class Vehicle {
         System.out.println(this.name);
     }
 
-    public void drive() {
-        System.out.println("vroom!!");
-    }
+    public abstract void drive();
 }

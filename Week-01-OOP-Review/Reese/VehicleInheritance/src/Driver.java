@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 public class Driver {
     public static void main(String[] args) {
         // Vehicle v = new Vehicle();
@@ -6,11 +6,24 @@ public class Driver {
         // v.drive();
 
 
-        Car c = new Car();
-        c.drive();
+        // c.drive();
+        
+        
+        Vehicle c = new Car("Hyundai");
+        Vehicle t = new Truck("Chevy");
+        Vehicle s = new Semi("18 wheeler");
+
+        Vehicle v = new Vehicle();
 
 
-        Truck t = new Truck();
-        t.drive();
+        doThing(t);
+        // doThing(c);
     }
+
+
+    public static void doThing(Vehicle v){
+        v.drive();
+    }
+
+
 }
