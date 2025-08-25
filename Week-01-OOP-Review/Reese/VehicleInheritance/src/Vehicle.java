@@ -1,4 +1,4 @@
-public abstract class Vehicle {
+public abstract class Vehicle extends Object {
     // fields
 
     private String name;

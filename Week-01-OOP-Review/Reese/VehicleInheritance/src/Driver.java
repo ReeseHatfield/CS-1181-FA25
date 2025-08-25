@@ -8,21 +8,33 @@ public class Driver {
 
         // c.drive();
         
+        Drivable c = new Car("Hyundai");
+
+        System.out.println(c.toString());
+
+
+        // c.driveDistance(19);
+
+
+        // Truck t = new Truck("Chevy");
+        // Vehicle s = new Semi("18 wheeler");
+
+
+        // t.tow(c);
         
-        Vehicle c = new Car("Hyundai");
-        Vehicle t = new Truck("Chevy");
-        Vehicle s = new Semi("18 wheeler");
 
-        Vehicle v = new Vehicle();
+        // Vehicle v = new Vehicle("asdfasdf");
 
 
-        doThing(t);
+        // doThing(t);
         // doThing(c);
     }
 
 
-    public static void doThing(Vehicle v){
-        v.drive();
+    public static void doThing(Drivable v){
+        // DYNAMICALLY figuring out which drive method to call
+        v.driveDistance(10);
+
     }
 
 

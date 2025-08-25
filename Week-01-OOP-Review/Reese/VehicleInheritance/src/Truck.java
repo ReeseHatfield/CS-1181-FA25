@@ -11,4 +11,10 @@ public class Truck extends Vehicle {
         System.out.println("VROOOOM!!");
     }
 
+
+
+    public void tow(Car other){
+        System.out.println("I am towing the other car");
+    }
+
 }
