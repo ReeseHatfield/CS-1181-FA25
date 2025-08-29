@@ -17,6 +17,12 @@ public abstract class Plant
 
     public abstract void photosynthesis(int amtOfSunlight);
 
+    @Override
+    public String toString()
+    {
+        return "Plant " + "(" + type + ")" + ": current height is " + height;
+    }
+
     public int getHeight()
     {
         return height;

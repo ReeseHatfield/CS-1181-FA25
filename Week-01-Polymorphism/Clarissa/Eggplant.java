@@ -31,4 +31,10 @@ public class Eggplant extends Plant
     {
         numOfEggplants++;
     }
+
+    @Override
+    public String toString()
+    {
+        return super.toString() + " \nEggplant has produced " + numOfEggplants + " eggplants.";
+    }
 }
