@@ -18,6 +18,7 @@ public class Driver
         garden.add(new Eggplant());
         garden.add(new VenusFlyTrap());
 
+
         // cannot do this because at compile time the compiler only looks
         // at the type on the left, so we don't know for sure if it is an
         // Eggplant object
@@ -46,14 +47,22 @@ public class Driver
             }
         }
 
-        for (Plant p : garden)
-        {
-            System.out.println(p);
-        }
+        garden.get(0).setHeight(garden.get(2).getHeight());
+        System.out.println("Unsorted: \n" + garden);
+        Collections.sort(garden);
+        System.out.println("Sorted: \n" + garden);
+
+//        for (Plant p : garden)
+//        {
+//            System.out.println(p);
+//        }
 
         Human h = new Human();
         eatDinner(h);
-        eatDinner((VenusFlyTrap) garden.get(2));
+        if (garden.get(0) instanceof VenusFlyTrap)
+        {
+            eatDinner((VenusFlyTrap) garden.get(0));
+        }
     }
 
     // example of polymorphism
@@ -66,6 +75,11 @@ public class Driver
         // p.growAnEggplant();
     }
 
+    // dynamic dispatch example
+    // we can't create a Consumer object
+    // BUT we can use it as a parameter type
+    // that then requires that the parameter we pass in
+    // implements consumer
     public static void eatDinner(Consumer c)
     {
         c.eat();

@@ -16,10 +16,27 @@ public class Human implements Consumer
         if (!isFull)
         {
             numFoodEaten++;
+            if (numFoodEaten > 3)
+            {
+                isFull = true;
+            }
         }
         else
         {
             System.out.println("Human is full!");
+        }
+    }
+
+    @Override
+    public String generateByproduct()
+    {
+        if (isFull)
+        {
+            return "byproduct";
+        }
+        else
+        {
+            return "nothing";
         }
     }
 

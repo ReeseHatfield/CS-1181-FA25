@@ -26,5 +26,12 @@ public class VenusFlyTrap extends Plant implements Consumer
     public void eat()
     {
         numFliesConsumed++;
+        grow(1);
+    }
+
+    @Override
+    public String generateByproduct()
+    {
+        return "fly corpse";
     }
 }

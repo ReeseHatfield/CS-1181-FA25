@@ -1,4 +1,4 @@
-public abstract class Plant
+public abstract class Plant implements Comparable<Plant>
 {
     private int height = 0;
     private String color = "";
@@ -21,6 +21,34 @@ public abstract class Plant
     public String toString()
     {
         return "Plant " + "(" + type + ")" + ": current height is " + height;
+    }
+
+    @Override
+    public int compareTo(Plant p)
+    {
+        if (this.height < p.getHeight())
+        {
+            return -1;
+        }
+        else if (this.height > p.getHeight())
+        {
+            return 1;
+        }
+        else
+        {
+            if (this.producesFruit && !p.isProducesFruit())
+            {
+                return -1;
+            }
+            else if (!this.producesFruit && p.isProducesFruit())
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 
     public int getHeight()
