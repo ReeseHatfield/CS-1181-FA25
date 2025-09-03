@@ -54,6 +54,36 @@ public class Driver {
         System.out.println(list);
 
 
+        Commuter c = new GradStudent(3.9);
+
+
+
+
+
+        Student s5 = new GradStudent(4.5);
+        doThing(new UnderGradStudent(3.4));
+        doThing(s5);
+
+
+
+        // GradStudent s = new Commuter() {
+
+        //     @Override
+        //     public void driveToCampus() {
+        //     }
+
+        //     @Override
+        //     public void foo() {
+        //     }
+            
+        // };
+
+    }
+
+    public static void doThing(Student s){
+
+        // 
+        s.goToClass();
     }
 
 
