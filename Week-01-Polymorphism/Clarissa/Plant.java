@@ -1,13 +1,18 @@
+import java.util.Random;
+
 public abstract class Plant implements Comparable<Plant>
 {
     private int height = 0;
+    private int daysOld = 0;
     private String color = "";
     private boolean producesFruit = false;
     private String type = "";
+    private Random rng = new Random();
 
     public Plant()
     {
         this.color = "green";
+        this.daysOld = rng.nextInt(30);
     }
 
     public void grow(int amtToGrow)
@@ -20,7 +25,7 @@ public abstract class Plant implements Comparable<Plant>
     @Override
     public String toString()
     {
-        return "Plant " + "(" + type + ")" + ": current height is " + height;
+        return "Plant " + "(" + type + ")" + ": current height is " + height + " and is " + daysOld + " days old.";
     }
 
     @Override
@@ -89,5 +94,15 @@ public abstract class Plant implements Comparable<Plant>
     public void setType(String type)
     {
         this.type = type;
+    }
+
+    public int getDaysOld()
+    {
+        return daysOld;
+    }
+
+    public void setDaysOld(int daysOld)
+    {
+        this.daysOld = daysOld;
     }
 }

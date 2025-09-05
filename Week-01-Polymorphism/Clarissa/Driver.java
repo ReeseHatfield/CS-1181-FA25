@@ -50,7 +50,9 @@ public class Driver
         garden.get(0).setHeight(garden.get(2).getHeight());
         System.out.println("Unsorted: \n" + garden);
         Collections.sort(garden);
-        System.out.println("Sorted: \n" + garden);
+        System.out.println("Sorted by Height: \n" + garden);
+        Collections.sort(garden, new PlantAgeComparator());
+        System.out.println("Sorted by Age: \n" + garden);
 
 //        for (Plant p : garden)
 //        {
