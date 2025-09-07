@@ -1,8 +1,8 @@
-public abstract class Book {
+public abstract class Book implements Comparable<Book> {
     
 
     private double deweyDecimal;
-    private String title;
+    public String title;
     public int daysLeftOnLoan;
     
     public Book(double deweyDecimal, String title){
@@ -12,8 +12,24 @@ public abstract class Book {
     }
 
     public abstract void checkout(int age);//{
-    //     // print the cost
-    //     // 0 -> if youre under =12
-    //     // 10 -> if youre above 12
-    // }
+
+
+
+    public int compareTo(Book other) {
+        if(this.deweyDecimal > other.deweyDecimal){
+            return -1;
+        }
+        else if (this.deweyDecimal < other.deweyDecimal){
+            return +1;
+        }
+        else {
+            return 0;
+        }
+    }
+
+
+    public String toString(){
+        return this.title;
+    }
+
 }
