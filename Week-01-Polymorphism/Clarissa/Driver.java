@@ -65,6 +65,37 @@ public class Driver
         {
             eatDinner((VenusFlyTrap) garden.get(0));
         }
+
+
+        Human bob = new Human();
+        Human tom = new Human();
+        ArrayList<Human> people = new ArrayList<>();
+        people.add(h);
+        people.add(bob);
+        people.add(tom);
+
+        System.out.println(people);
+        Collections.sort(people);
+        System.out.println(people);
+
+        Collections.sort(people, new Human.WeightComparator());
+        System.out.println(people);
+
+        Collections.sort(people, Human.weightCompare);
+        System.out.println(people);
+
+        Collections.sort(people, new Comparator<Human>()
+        {
+            @Override
+            public int compare(Human h1, Human h2)
+            {
+                return Integer.compare(h1.getNumFoodEaten(), h2.getNumFoodEaten());
+            }
+        });
+        System.out.println(people);
+
+        Collections.sort(people, (h1, h2) -> Integer.compare(h1.getId(), h2.getId()));
+        System.out.println(people);
     }
 
     // example of polymorphism

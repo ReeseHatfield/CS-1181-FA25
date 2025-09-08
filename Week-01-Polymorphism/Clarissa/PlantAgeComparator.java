@@ -2,7 +2,6 @@ import java.util.Comparator;
 
 public class PlantAgeComparator implements Comparator<Plant>
 {
-
     @Override
     public int compare(Plant p1, Plant p2)
     {
