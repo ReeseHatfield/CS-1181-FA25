@@ -1,4 +1,4 @@
-public abstract class Book implements Comparable<Book> {
+public class Book implements Comparable<Book> {
     
 
     private double deweyDecimal;
@@ -11,7 +11,19 @@ public abstract class Book implements Comparable<Book> {
         this.daysLeftOnLoan = 14;
     }
 
-    public abstract void checkout(int age);//{
+    // book b1 = new Book()
+    // book b2 = new Book(b1)
+    public Book(Book other){
+        this.deweyDecimal = other.deweyDecimal;
+        this.title = other.title;
+        this.daysLeftOnLoan = other.daysLeftOnLoan;
+    }
+
+    public void setDDNumber(double newNumber){
+        this.deweyDecimal = newNumber;
+    }
+
+    // public abstract void checkout(int age);//{
 
 
 
@@ -29,7 +41,7 @@ public abstract class Book implements Comparable<Book> {
 
 
     public String toString(){
-        return this.title;
+        return this.title + ": " + this.deweyDecimal;
     }
 
 }
