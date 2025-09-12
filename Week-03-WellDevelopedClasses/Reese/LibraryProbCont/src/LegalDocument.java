@@ -4,7 +4,7 @@ public class LegalDocument extends Book implements Renewable{
         super(deweyDecimal, title);
     }
 
-    @Override
+    // @Override
     public void checkout(int age) {
         System.out.println("Free to checkout");
     }
