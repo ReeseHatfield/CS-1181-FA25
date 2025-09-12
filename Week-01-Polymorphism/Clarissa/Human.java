@@ -29,12 +29,21 @@ public class Human implements Consumer, Comparable<Human>
         }
     }
 
-    public Human()
+    public Human() throws InvalidHumanIDException
     {
         this.setHeight(rng.nextDouble(100));
         this.setWeight(rng.nextDouble(200));
         this.setNumFoodEaten(rng.nextInt(5));
         this.setId(rng.nextInt(100));
+    }
+
+    public Human(String hairColor, String eyeColor, double height, double weight, int id) throws InvalidHumanIDException
+    {
+        this.hairColor = hairColor;
+        this.eyeColor = eyeColor;
+        this.height = height;
+        this.weight = weight;
+        setId(id);
     }
 
     @Override
@@ -132,9 +141,16 @@ public class Human implements Consumer, Comparable<Human>
         return id;
     }
 
-    public void setId(int id)
+    public void setId(int id) throws InvalidHumanIDException
     {
-        this.id = id;
+        if (id >= 0)
+        {
+            this.id = id;
+        }
+        else
+        {
+            throw new InvalidHumanIDException();
+        }
     }
 
     // natural ordering
