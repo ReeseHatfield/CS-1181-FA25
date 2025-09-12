@@ -1,6 +1,6 @@
 # Quiz One Review
 
-The first quiz will be held in the ladder half of class, September 15th, 2025. You will have 30 minutes to take the quiz. The exam will be a paper exam, so a writing utensil is required. The exam is individual and talking will not be tolerated. It will be primarily focused on advanced OOP topics.
+The first quiz will be held in the latter half of class, September 15th, 2025. You will have 30 minutes to take the quiz. The exam will be a paper exam, so a writing utensil is required. The exam is individual and talking will not be tolerated. It will be primarily focused on advanced OOP topics.
 
 ## Inheritance
 - Understand how inheritance works
