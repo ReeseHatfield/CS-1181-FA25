@@ -14,9 +14,16 @@ public class Driver {
         /*
          * 
          * Automobile a = new SUV();
-         * (SUV) a.bar();
+         * (SUV) a.bar(); -> typ
          * 
          */
+
+
+        Automobile a = new SUV("Ford");
+
+        // cast Automobile -> SUV. Downcasting
+        SUV temp = (SUV) a;
+        temp.bar();
     }
 
 
