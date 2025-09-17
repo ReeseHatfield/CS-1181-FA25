@@ -10,6 +10,14 @@ public class Driver
     {
         Scanner scnr = new Scanner(System.in);
 
+        Eggplant ep = new Eggplant();
+        Plant plan = (Plant) ep;
+
+        if (plan instanceof Eggplant)
+        {
+            System.out.println("yes");
+        }
+
         // we can't call growAnEggplant() because at compile time
         // only the type on the left hand side is considered
 //        Plant p1 = new Eggplant();
@@ -22,6 +30,7 @@ public class Driver
         garden.add(new Eggplant());
         garden.add(new VenusFlyTrap());
 
+        Plant c = new VenusFlyTrap();
 
         // cannot do this because at compile time the compiler only looks
         // at the type on the left, so we don't know for sure if it is an
