@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Driver {
     public static void main(String[] args) {
@@ -9,12 +10,21 @@ public class Driver {
 
         // CustomArrayList<String> customList = new CustomArrayList<>();
 
-        Box<Integer> b1 = new Box<>(5);
-        Box<String> b2 = new Box<>("Hello");
+        Box<Double> b1 = new Box<>(5.6);
+        Box<Double> b2 = new Box<>(54.3);
+        Box<Double> b3 = new Box<>(0.0);
+        Box<Double> b4 = new Box<>(7.8);
 
-        Box<Double> b3 = new Box<>(4.5);
-
-        System.out.println(b3.getThing());
+        ArrayList<Box<Double>> list = new ArrayList<>();
+        
+        
+        list.add(b1);
+        list.add(b2);
+        list.add(b3);
+        list.add(b4);
+        
+        Collections.sort(list);
+        System.out.println(list);
 
 
 
