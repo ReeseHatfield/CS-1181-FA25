@@ -1,16 +1,24 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
-import java.util.Scanner;
 
-public class LotteryMachine <E extends Comparable<E>>
+public class BingoMachine<E>
 {
     ArrayList<E> randomValues = new ArrayList<>();
     Random rng = new Random();
 
-    public LotteryMachine()
+    public BingoMachine()
     {
 
+    }
+
+    public void addAll(ArrayList<? extends E> valuesToAdd)
+    {
+        randomValues.addAll(valuesToAdd);
+    }
+
+    public void addBingoMachineTo(ArrayList<? super E> listToAddTo)
+    {
+        listToAddTo.addAll(randomValues);
     }
 
     public void addItem(E item)
@@ -24,9 +32,8 @@ public class LotteryMachine <E extends Comparable<E>>
         return randomValues.remove(ran);
     }
 
-    public void orderMachine()
+    public int getNumItems()
     {
-        Collections.sort(randomValues);
-        System.out.println(randomValues);
+        return randomValues.size();
     }
 }
