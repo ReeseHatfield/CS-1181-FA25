@@ -1,7 +1,4 @@
-import java.util.ArrayDeque;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class LinkedListDriver
 {
@@ -86,5 +83,30 @@ public class LinkedListDriver
         System.out.println(customerPriority.poll());
         System.out.println(customerPriority);
 
+        System.out.println();
+        System.out.println();
+
+        Map<String, Double> studentCreditHours = new TreeMap<>();
+
+        studentCreditHours.put("Clarissa", 16.0);
+        studentCreditHours.put("Subiksha", 15.0);
+        studentCreditHours.put("Blake", 13.0);
+        System.out.println(studentCreditHours);
+        System.out.println(studentCreditHours.keySet());
+        System.out.println(studentCreditHours.values());
+        studentCreditHours.put("Greg", 13.0);
+        System.out.println(studentCreditHours.values());
+        studentCreditHours.put("Clarissa", 17.0);
+        System.out.println(studentCreditHours);
+        System.out.println(studentCreditHours.get("Greg"));
+
+        System.out.println();
+        System.out.println();
+
+        Set<Boolean> isPresent = new TreeSet<>();
+        isPresent.add(true);
+        isPresent.add(false);
+        isPresent.add(true);
+        System.out.println(isPresent);
     }
 }
