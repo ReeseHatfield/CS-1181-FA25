@@ -9,5 +9,6 @@ public class IntroGUI
         mainWindow.setLocation(100, 100);
         mainWindow.setVisible(true);
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        System.out.println("hey what's up!");
     }
 }
