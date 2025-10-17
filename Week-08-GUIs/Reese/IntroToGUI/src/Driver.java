@@ -12,50 +12,84 @@ public class Driver {
         
         
         // modify 
-        frame.setSize(500, 500);
+        int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+        frame.setSize(screenWidth / 2, 500);
         frame.setTitle("My First GUI program");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
        
 
         JPanel root = new JPanel();
+        root.setLayout(new BorderLayout());
 
-        JLabel text1 = new JLabel("Hello world");
-        root.add(text1);
+        root.add(new CustomButton(), BorderLayout.SOUTH);
+        root.add(new CustomButton(), BorderLayout.NORTH);
+        root.add(new CustomButton(), BorderLayout.EAST);
+        root.add(new CustomButton(), BorderLayout.WEST);
 
-        JLabel text2 = new JLabel("My name is Reese");
-        root.add(text2);
+        // root.add(new JLabel("I am placed in the center"), BorderLayout.CENTER);
 
-        ArrayList<JButton> allButtons = new ArrayList<>();
-        for(int i = 0; i < 10; i++){
+        JPanel centerPanel = new JPanel();
+        // centerPanel.setLayout(new GridLayout(3,3));
+        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.X_AXIS));
 
-            JButton btn = new JButton("Click Me!");
-            btn.addActionListener(e -> {
-                System.out.println("Button was clicked from a lambda");
-                this.timesClicked++;
-                System.out.println("That was the " + this.timesClicked + "th time youve clicked that");
-            });
-            // root.add(btn);
-            allButtons.add(btn);
+        for(int i = 0; i < 9; i++){
+            centerPanel.add(new JButton("" + i));
         }
 
-        allButtons.get(3).setText("Something different");
+        root.add(centerPanel, BorderLayout.CENTER);
+        // root.add(new CustomButton());
+        // root.add(new CustomButton());
+        // root.add(new CustomButton());
+        // root.add(new CustomButton());
+
+        // JLabel text1 = new JLabel("Hello world");
+        // root.add(text1);
+
+        // JLabel text2 = new JLabel("My name is Reese");
+        // root.add(text2);
 
 
-        for(JButton btn: allButtons){
-            root.add(btn);
-        }
+        // JOptionPane option = new JOptionPane();
 
-        JFileChooser files = new JFileChooser();
-        root.add(files);
+        // Flow Layout
+
+        // ArrayList<JButton> allButtons = new ArrayList<>();
+        // for(int i = 0; i < 3; i++){
+
+        //     JButton btn = new JButton("Click Me!");
+        //     btn.addActionListener(e -> {
+
+        //         btn.setBackground(Color.MAGENTA);
+        //         System.out.println("Button was clicked from a lambda");
+        //         this.timesClicked++;
+        //         System.out.println("That was the " + this.timesClicked + "th time youve clicked that");
+        //     });
+        //     // root.add(btn);
+        //     allButtons.add(btn);
+        // }
+
+        // // allButtons.get(3).setText("Something different");
+
+        // allButtons.get(0).addActionListener(e -> {
+        //     JOptionPane.showConfirmDialog(root, "click one");
+        // });
+
+
+        // for(JButton btn: allButtons){
+        //     root.add(btn);
+        // }
+
+        // JFileChooser files = new JFileChooser();
+        // root.add(files);
 
         
-        JColorChooser chooser = new JColorChooser();
-        root.add(chooser);
+        // JColorChooser chooser = new JColorChooser();
+        // root.add(chooser);
 
 
 
-        frame.add(root);
+        frame.setContentPane(root);
         // render object
         frame.setVisible(true);
 
