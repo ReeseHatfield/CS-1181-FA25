@@ -11,6 +11,8 @@ public class GUIWindow extends JFrame
     private JSlider fontSizeSlider = new JSlider();
     private JLabel instructions = new JLabel("Click the button below to get points!");
     private JLabel score = new JLabel("Score: ");
+    private JButton test = new MyButton();
+    private JPanel sliderPanel = new JPanel();
 
     public GUIWindow(String title)
     {
@@ -40,18 +42,16 @@ public class GUIWindow extends JFrame
         JButton multiplierButton = new JButton();
         multiplierButton.setText("Multiplier");
         multiplierButton.addActionListener(e -> {
-            this.setTitle("MULTIPLYING!!!");
             multiplier++;
             multiplierLabel.setText("Multiplier: " + multiplier);
 
             for (int i = 5; i > 0; i--)
             {
-                multiplierTimer.setText("Time remaining: " + i + "s");
-                centralPanel.revalidate();
-                centralPanel.repaint();
-
                 try
                 {
+                    multiplierTimer.setText("Time remaining: " + i + "s");
+                    revalidate();
+                    repaint();
                     Thread.sleep(1000);
                 }
                 catch (InterruptedException ie)
@@ -97,7 +97,9 @@ public class GUIWindow extends JFrame
         }
 
         sliderSetup();
-        mainPanel.add(fontSizeSlider, BorderLayout.EAST);
+        sliderPanel.add(fontSizeSlider);
+        sliderPanel.add(test);
+        mainPanel.add(sliderPanel, BorderLayout.EAST);
         mainPanel.add(manyButtonPanel, BorderLayout.SOUTH);
         this.add(mainPanel);
     }
