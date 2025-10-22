@@ -6,7 +6,7 @@ public class Driver {
 
     private int timesClicked = 0;
 
-    public Driver(){
+    public Driver() throws InterruptedException{
         // first create
         JFrame frame = new JFrame();
         
@@ -22,10 +22,10 @@ public class Driver {
         JPanel root = new JPanel();
         root.setLayout(new BorderLayout());
 
-        root.add(new CustomButton(), BorderLayout.SOUTH);
-        root.add(new CustomButton(), BorderLayout.NORTH);
-        root.add(new CustomButton(), BorderLayout.EAST);
-        root.add(new CustomButton(), BorderLayout.WEST);
+        root.add(new CustomButton(frame), BorderLayout.SOUTH);
+        root.add(new CustomButton(frame), BorderLayout.NORTH);
+        root.add(new CustomButton(frame), BorderLayout.EAST);
+        root.add(new CustomButton(frame), BorderLayout.WEST);
 
         // root.add(new JLabel("I am placed in the center"), BorderLayout.CENTER);
 
@@ -93,12 +93,14 @@ public class Driver {
         // render object
         frame.setVisible(true);
 
+        Thread.sleep(1000);
+
         System.out.println("reached end of main");
     }
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         new Driver();
     }
 }

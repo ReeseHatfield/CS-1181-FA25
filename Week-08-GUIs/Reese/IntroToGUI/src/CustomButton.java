@@ -3,15 +3,18 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 public class CustomButton extends JButton implements ActionListener {
     
+    JFrame rootFrame;
 
-    public CustomButton(){
+    public CustomButton(JFrame root){
 
+        
         super("I am a custom button");
+
+        this.rootFrame = root;
 
         // this.setText("I am a custom button");
 
@@ -29,16 +32,29 @@ public class CustomButton extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        int height = Toolkit.getDefaultToolkit().getScreenSize().height;
-        int width = Toolkit.getDefaultToolkit().getScreenSize().width;
 
+        int sum = 0;
 
-        for(int i = 0; i < 10; i ++){
-            JFrame frame = new JFrame();
-            frame.setLocation((int) (Math.random() * height), (int) (Math.random() * width));
-            
-            frame.setSize(100,100);
-            frame.setVisible(true);
+        for(int i = 0; i < 100000000; i++){
+            sum += i;
         }
+
+        System.out.println(sum);
+
+        // this.rootFrame.dispose();
+
+        // RIGHT HERE
+
+        // int height = Toolkit.getDefaultToolkit().getScreenSize().height;
+        // int width = Toolkit.getDefaultToolkit().getScreenSize().width;
+
+
+        // for(int i = 0; i < 10; i ++){
+        //     JFrame frame = new JFrame();
+        //     frame.setLocation((int) (Math.random() * height), (int) (Math.random() * width));
+            
+        //     frame.setSize(100,100);
+        //     frame.setVisible(true);
+        // }
     }
 }
