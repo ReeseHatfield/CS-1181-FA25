@@ -7,6 +7,8 @@ public class GUIWindow extends JFrame
 {
     private int clickCount = 0;
     private int multiplier = 1;
+    private Timer countdownTimer;
+    private int countdown = 5;
     private JPanel mainPanel = new JPanel(new BorderLayout());
     private JSlider fontSizeSlider = new JSlider();
     private JLabel instructions = new JLabel("Click the button below to get points!");
@@ -22,56 +24,86 @@ public class GUIWindow extends JFrame
         JPanel centralPanel = new JPanel();
         centralPanel.setLayout(new BoxLayout(centralPanel, BoxLayout.Y_AXIS));
 
+        JPanel cookiePanel = new JPanel();
         JButton cookieClicker = new JButton("Click me!");
         cookieClicker.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                clickCount++;
-                String scoreText = "Score: " + (clickCount * multiplier);
+                clickCount = clickCount + multiplier;
+                String scoreText = "Score: " + clickCount;
                 score.setText(scoreText);
             }
         });
+        cookieClicker.setIcon(new ImageIcon("cookie.jpg"));
+        cookiePanel.add(cookieClicker);
 
         JLabel multiplierLabel = new JLabel();
-        multiplierLabel.setText("Multiplier: 1");
+        multiplierLabel.setText("Multiplier: 1x");
 
-        JLabel multiplierTimer = new JLabel("Timer");
+        JLabel multiplierTimer = new JLabel();
 
         JButton multiplierButton = new JButton();
         multiplierButton.setText("Multiplier");
         multiplierButton.addActionListener(e -> {
+            multiplierButton.setEnabled(false);
             multiplier++;
-            multiplierLabel.setText("Multiplier: " + multiplier);
+            countdown = 5;
+            multiplierLabel.setText("Multiplier: " + multiplier + "x");
+            multiplierTimer.setText("Time remaining: " + countdown + "s");
+            repaint();
+            revalidate();
 
-            for (int i = 5; i > 0; i--)
-            {
-                try
+            countdownTimer = new Timer(1000, timedEvent -> {
+                countdown--;
+
+                if (countdown > 0)
                 {
-                    multiplierTimer.setText("Time remaining: " + i + "s");
-                    revalidate();
-                    repaint();
-                    Thread.sleep(1000);
+                    multiplierTimer.setText("Time remaining: " + countdown + "s");
                 }
-                catch (InterruptedException ie)
+                else
                 {
-                    System.out.println("Oops!");
+                    multiplierTimer.setText(" ");
+                    multiplier = 1;
+                    multiplierLabel.setText("Multiplier: " + multiplier + "x");
+                    countdownTimer.stop();
+                    multiplierButton.setEnabled(true);
                 }
-            }
+            });
+            countdownTimer.start();
+
             multiplierTimer.setText("");
+            // this code will pause the entire EDT
+            // no other actions can be taken (like updating label text)
+            // any interactions the user makes are recorded but not acted upon
+            // until button completes
+//            for (int i = 5; i > 0; i--)
+//            {
+//                try
+//                {
+//                    multiplierTimer.setText("Time remaining: " + i + "s");
+//                    revalidate();
+//                    repaint();
+//                    Thread.sleep(1000);
+//                }
+//                catch (InterruptedException ie)
+//                {
+//                    System.out.println("Oops!");
+//                }
+//            }
         });
 
         // sometimes directly setting the size of a component via setSize
         // does not work depending on our layout manager
         //cookieClicker.setSize(100, 100);
-        cookieClicker.setPreferredSize(new Dimension(200, 400));
+        cookieClicker.setPreferredSize(new Dimension(300, 300));
         centralPanel.add(instructions);
         centralPanel.add(score);
         centralPanel.add(multiplierLabel);
         centralPanel.add(multiplierTimer);
         centralPanel.add(multiplierButton);
-        centralPanel.add(cookieClicker);
+        centralPanel.add(cookiePanel);
         mainPanel.add(centralPanel, BorderLayout.CENTER);
 
         JButton helloButton = new JButton("Hello!");
