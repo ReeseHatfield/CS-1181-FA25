@@ -1,12 +1,17 @@
 public class Driver {
 
     public static void main(String[] args) {
+
+
+        printTriangle(15);
         
-        System.out.println(countOccurrences('l', "hello"));
-        System.out.println(countOccurrences('o', "potatooo"));
+        // System.out.println(countOccurrences('l', "hello"));
+        // System.out.println(countOccurrences('o', "potatooo"));
 
 
-
+        // System.out.println(endX("xx_hello_xx"));
+        // System.out.println(endX("xx"));
+        // System.out.println(endX(""));
 
 
         // System.out.println(fibbonacci(0));
@@ -76,5 +81,54 @@ public class Driver {
 
         // recursive call
         doThing(timesToPrint - 1);
+    }
+
+
+    public static String endX(String input){
+        if (input.isEmpty()){
+            return input; // return ""
+        }
+
+        char first = input.charAt(0);
+
+        if(first == 'x'){
+
+
+            return endX(input.substring(1)) + first;
+        } else {
+
+            // endX(input.sub)
+            // recursion call endX
+
+            return first + endX(input.substring(1));
+        }
+    }
+
+
+    public static void printTriangle(int targetHeight){
+        printTriangleHelper(1, targetHeight);
+    }
+
+    public static void printTriangleHelper(int currentHeight, int targetHeight) {
+        if(currentHeight == targetHeight){
+            return;
+        }
+
+        // goal: kill this loop
+        printAsterix(currentHeight);
+        System.out.println();
+
+        printTriangleHelper(currentHeight + 1, targetHeight);
+    }
+
+    public static void printAsterix(int timesToPrint){
+        // System.out.print();
+
+        if(timesToPrint == 0){
+            return;
+        }
+
+        System.out.print("* ");
+        printAsterix(timesToPrint - 1);
     }
 }
