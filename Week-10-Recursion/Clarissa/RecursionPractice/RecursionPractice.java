@@ -12,6 +12,7 @@ public class RecursionPractice
         System.out.println(reverseWord("hello"));
         System.out.println(countEven("543276"));
         System.out.println(findMax(nums));
+        System.out.println(permute("pencil"));
     }
 
     public static String reverseWord(String word)
@@ -64,5 +65,28 @@ public class RecursionPractice
             return firstValue;
         }
         return max;
+    }
+
+    public static ArrayList<String> permute(String word) {
+        ArrayList<String> pList = new ArrayList<>();
+        if (word.isEmpty()) {
+            return null;
+        } else if (word.length() == 1) {
+            pList.add(word);
+            return pList;
+        } else {
+            for (int i = 0; i < word.length(); i++) {
+                // String letter = word.substring(i, i + 1);
+                char letter = word.charAt(i);
+                String remaining = word.substring(0, i) + word.substring(i + 1);
+
+                ArrayList<String> permutes = permute(remaining);
+                for (String p : permutes) {
+                    String reconstructed = letter + p;
+                    pList.add(reconstructed);
+                }
+            }
+            return pList;
+        }
     }
 }
