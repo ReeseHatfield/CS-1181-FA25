@@ -1,3 +1,14 @@
+// Nov 5th quiz
+
+// 1 recursion problem
+// tracing a recursive
+// primarily on swing
+// Layout managers
+// positional coordinates
+// custom graphics
+// timer
+// EDTs
+
 
 public class LinkedList {
 
