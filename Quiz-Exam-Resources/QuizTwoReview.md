@@ -3,7 +3,7 @@
 The second quiz will be held in the latter half of class, November 5th, 2025. You will have 30 minutes to take the quiz. The exam will be a paper exam, so a writing utensil is required. The exam is individual and talking will not be tolerated.
 
 ## GUI
-* Understand basics of animation
+* Understand basics of animation (Timer, custom graphics, pixel coordinates, etc.)
 * Understand basic frame operations
 * Understand the difference between JFrame and JPanel
 * Understand basic thread usage (EDT, etc.)
