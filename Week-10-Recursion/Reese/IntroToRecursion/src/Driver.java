@@ -109,7 +109,7 @@ public class Driver {
         printTriangleHelper(1, targetHeight);
     }
 
-    public static void printTriangleHelper(int currentHeight, int targetHeight) {
+    private static void printTriangleHelper(int currentHeight, int targetHeight) {
         if(currentHeight == targetHeight){
             return;
         }
