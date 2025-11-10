@@ -7,7 +7,7 @@ public class BinSearch{
             return -1;
         }
 
-        int mid = left + (right - left) / 2;
+        int mid = (left + right) / 2;
 
         if (list.get(mid) == target) {
             return mid;
