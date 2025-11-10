@@ -40,16 +40,12 @@ public class LinkedList {
 	private void addAtIndex(String addMe, int targetIndex, Node curNode, int currentIndex){
 
 		// while(cur != null)
-
-
 		if(curNode == null){
 			return;
 		}
 
 		if(targetIndex == 0){
 			Node newNode = new Node(addMe);
-
-
 			newNode.next = this.head;
 
 			this.head = newNode;
@@ -61,10 +57,7 @@ public class LinkedList {
 		// base case
 		if(currentIndex == targetIndex - 1){
 			Node newNode = new Node(addMe);
-
-
 			newNode.next = curNode.next;
-
 			curNode.next = newNode;
 
 			return;

@@ -14,6 +14,9 @@ public class Driver {
             }
             
         };
+
+
+
         
 
         // ArrayList<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 11, 4, 11, 11, 1, 11));
@@ -42,7 +45,7 @@ public class Driver {
 
         ArrayList<String> list = new ArrayList<>(Arrays.asList("ab", "cd", "ef", "gh"));
 
-        System.out.println(indexOfValue(list, "ef", 0));
+        System.out.println(indexOfValue(list, "absd"));
 
 
     }
@@ -53,36 +56,36 @@ public class Driver {
 
     public static int indexOfValue(List<String> searchMe, String target){
 
-        //doing some piece of work
-        // that is proportional to the searchMe
-
-        // O(N) -> linear search
-        for(int i = 0; i < searchMe.size(); i++){
-            if(searchMe.get(i).equals(target)){
-                return i;
-            }
-        }
-
-        return -1;
-    }
-
-
-    public static int indexOfValue(List<String> searchMe, String target, int curIndex){
-
-        System.out.println(searchMe);
-
         if(searchMe.isEmpty()){
             return -1;
         }
 
-        if(target.equals(searchMe.get(0))){
-            return curIndex;
+        if(searchMe.getLast().equals(target)){
+            return searchMe.size() - 1;
         }
 
-
-        return indexOfValue(searchMe.subList(1, searchMe.size()), target,  curIndex  + 1);
+        searchMe.removeLast();
+        return indexOfValue(searchMe, target);
 
     }
+
+
+    // public static int indexOfValue(List<String> searchMe, String target, int curIndex){
+
+    //     System.out.println(searchMe);
+
+    //     if(searchMe.isEmpty()){
+    //         return -1;
+    //     }
+
+    //     if(target.equals(searchMe.get(0)){
+    //         return curIndex;
+    //     }
+
+
+    //     return indexOfValue(searchMe.subList(1, searchMe.size()), target,  curIndex  + 1);
+
+    // }
 
 
 }
