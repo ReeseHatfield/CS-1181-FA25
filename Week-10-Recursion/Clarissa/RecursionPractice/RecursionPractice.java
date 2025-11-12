@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecursionPractice
 {
@@ -13,6 +14,7 @@ public class RecursionPractice
         System.out.println(countEven("543276"));
         System.out.println(findMax(nums));
         System.out.println(permute("pencil"));
+        combinations(4);
     }
 
     public static String reverseWord(String word)
@@ -88,5 +90,31 @@ public class RecursionPractice
             }
             return pList;
         }
+    }
+
+    public static void combinations(int num)
+    {
+        findCombinations(1, num, 0, new ArrayList<>());
+    }
+
+    public static void findCombinations(int currVal, int sumNum, int currentSum, List<Integer> combination)
+    {
+        if (currentSum == sumNum)
+        {
+            System.out.println(combination);
+            return;
+        }
+
+        if (currentSum > sumNum || currVal > sumNum) {
+            return;
+        }
+
+        // Include currVal in the current combination
+        combination.add(currVal);
+        findCombinations(currVal, sumNum, currentSum + currVal, combination);
+
+        // Backtrack and remove the currVal from the combination
+        combination.removeLast();
+        findCombinations(currVal + 1, sumNum, currentSum, combination);
     }
 }
