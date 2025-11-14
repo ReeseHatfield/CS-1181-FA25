@@ -1,4 +1,11 @@
 # CS-1181-FA25
+
+<p align="center">
+  <a href="https://github.com/ReeseHatfield/CS-1181-FA25">
+    <img src="cookie.jpg" alt="cookie" width="400" height="370">
+  </a>
+</p>
+
 Class materials for CS-1181 in Fall 2025
 
 ## Install Instructions
