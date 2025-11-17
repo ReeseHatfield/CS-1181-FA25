@@ -8,6 +8,18 @@ public class Sorting {
 
     public static void main(String[] args){
 
+        // ArrayList<Integer> list = new ArrayList<>(Arrays.asList(
+        //     6, 5, 10, 9, 1 , 12, 7
+        // ));
+
+        ArrayList<Integer> list = new ArrayList<>();
+        fillWithRandom(list);
+
+        System.out.println("unsort: " + list);
+
+        // list = (ArrayList<Integer>) bubbleSort(list);
+        list = (ArrayList<Integer>) mergeSort(list);
+        System.out.println("sorted: " + list);
 
 
     }
@@ -18,11 +30,40 @@ public class Sorting {
 
     public static List<Integer> mergeSort(List<Integer> list) {
         
+        if(list.size() <= 1){
+            return list;
+        }
+
+        int mid = list.size() / 2;
+        List<Integer> left = new ArrayList<>(list.subList(0, mid));
+        List<Integer> right = new ArrayList<>(list.subList(mid, list.size()));
+
+        left = mergeSort(left);
+        right = mergeSort(right);
+
+
+        return merge(left, right);
+
     }
 
 
     public static List<Integer> bubbleSort(List<Integer> list) {
+        List<Integer> copy = new ArrayList<>(list);
 
+        for(int i = 0; i < copy.size(); i++) {
+
+
+            // inner loop, moves the greatest value to the top
+            for(int j = 0; j < copy.size() - 1; j++){
+
+                if(copy.get(j)  > copy.get(j + 1)){
+                    Collections.swap(copy, j, j + 1);
+                }
+            }
+        }
+
+
+        return copy;
 
     }
 
@@ -36,7 +77,7 @@ public class Sorting {
 
         Random rng = new Random();
 
-        for(int i = 0; i < 100000; i++) {
+        for(int i = 0; i < 100_000; i++) {
             list.add(rng.nextInt(0, 100));
         }
     }
