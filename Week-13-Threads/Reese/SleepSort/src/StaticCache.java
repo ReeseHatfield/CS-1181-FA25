@@ -1,5 +1,5 @@
 public class StaticCache {
-    static int i;
+    volatile static int i;
 
     public static void main(String[] args) throws InterruptedException {
         Thread t1 = new Thread(() ->{
