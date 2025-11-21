@@ -1,7 +1,12 @@
-public class TestVolatile {
-    private static int counter = 0;
+import java.util.ArrayList;
+import java.util.Vector;
+
+public class TestVolatile extends Object {
+    private volatile static int counter = 0;
+
 
     public static void main(String[] args) {
+
         new Thread(() -> {
             for (int i = 0; i < 5; i++) {
                 
@@ -16,7 +21,7 @@ public class TestVolatile {
         }).start();
 
         while (counter < 5) {
-
+            // System.out.println("Blocking...");
         }
 
         System.out.println("Reader: counter = " + counter);
