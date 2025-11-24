@@ -3,24 +3,67 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class ThreadSearch {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException, InterruptedException {
         
 
-        writeRandomList(20_000_000);
-
-
-        long start = System.currentTimeMillis();
         ArrayList<Integer> list = readListFromFile();
 
-        System.out.println(list.indexOf(123456));
 
-        long end = System.currentTimeMillis();
+        System.out.println("starting search");
+
+        int numThreads = 5;
+        int target = 11412140;
+
+        ArrayList<Searcher> threads = new ArrayList<>();
+        for(int i = 0; i < numThreads; i++){
+            int portionSize = list.size() / numThreads;
+
+            int start = i * portionSize;
+            int end = start + portionSize;
+
+            if(i == numThreads - 1){
+                end = list.size();
+            }
+
+            System.out.println("looking at thread "  + i);
+            System.out.println(start);
+            System.out.println(end);
 
 
-        System.out.println("Took " + ((end - start) / 1000.0) + " seconds");
+            List<Integer> portion = list.subList(start, end);
+
+            threads.add(new Searcher(portion, target));
+
+        }
+
+        for(Searcher s: threads){
+            s.start();
+        }
+
+
+        for(Searcher s: threads) {
+            s.join();
+        }
+
+        System.out.println("program finished");
+
+
+
+
+
+
+
+        
+        // long start = System.currentTimeMillis();
+        // System.out.println(list.indexOf(1234567));
+        // long end = System.currentTimeMillis();
+
+
+        // System.out.println("Took " + ((end - start) / 1000.0) + " seconds");
     }
 
 
