@@ -6,8 +6,21 @@ import java.util.Collections;
 import java.util.Scanner;
 
 public class ThreadSearch {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         
+
+        writeRandomList(20_000_000);
+
+
+        long start = System.currentTimeMillis();
+        ArrayList<Integer> list = readListFromFile();
+
+        System.out.println(list.indexOf(123456));
+
+        long end = System.currentTimeMillis();
+
+
+        System.out.println("Took " + ((end - start) / 1000.0) + " seconds");
     }
 
 
