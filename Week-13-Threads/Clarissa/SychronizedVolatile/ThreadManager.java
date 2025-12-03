@@ -3,9 +3,18 @@ public class ThreadManager
     private int[] jobs = {3, 5, 7, 11, 19, 14, 3, 9, 2};
     private int nextJob = 0;
 
-    public int getNextJob()
+    public synchronized int getNextJob()
     {
         int currentJob = nextJob;
+
+        try
+        {
+            Thread.sleep(1);
+        }
+        catch (InterruptedException e)
+        {
+            System.out.println("oops");
+        }
 
         nextJob++;
 
